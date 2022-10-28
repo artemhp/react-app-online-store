@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function Header() {
+  const user = useSelector((state) => state.account.value);
+  console.log(user);
   return (
     <header className="header">
       <div className="container">
@@ -10,9 +13,12 @@ export default function Header() {
           </Link>
           <div className="header__info">
             Hi,{" "}
-            <Link to="/account" className="header__user">
-              Log in
-            </Link>
+            {!user.name && (
+              <Link to="/account" className="header__user">
+                Log in
+              </Link>
+            )}
+            {user.name}
             <div className="header__shop">
               <Link to="/favourites">
                 <img src="images/favourite.png" alt="favourite" height="20" />
@@ -20,7 +26,7 @@ export default function Header() {
                   className="header__shop--count"
                   id="headerFavouritesCount"
                 >
-                  0
+                  {user.favourites.length}
                 </span>
               </Link>
             </div>
