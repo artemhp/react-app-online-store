@@ -11,16 +11,24 @@ export const accountSlice = createSlice({
     },
   },
   reducers: {
+    logout: (state) => {
+      state.value = {
+        name: "",
+        email: "",
+        favourites: [],
+        status: false,
+      };
+    },
     login: (state, action) => {
       state.value = {
         name: action.payload.name,
         favourites: action.payload.favourites,
-        status: action.payload.status,
+        status: true,
       };
     },
   },
 });
 
-export const { login } = accountSlice.actions;
+export const { login, logout } = accountSlice.actions;
 
 export default accountSlice.reducer;

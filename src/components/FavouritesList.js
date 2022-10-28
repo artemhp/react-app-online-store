@@ -1,14 +1,18 @@
 import { useSelector } from "react-redux";
 export default function FavouritesList() {
+  const isUserLogin = useSelector((state) => state.account.value);
   const userFavourites = useSelector((state) => state.account.value.favourites);
   const products = useSelector((state) => state.products.value);
-  console.log(userFavourites);
-  console.log(products);
   const listOfFavourites = userFavourites.map((idFav) => {
     const result = products.find((item) => item.id === idFav);
     return result;
   });
-  console.log("listOfFavourites", listOfFavourites);
+  console.log(isUserLogin);
+  if (!isUserLogin) {
+    // redirect
+    return <div>Please Login</div>;
+  }
+
   return (
     <div className="favourites__container">
       <div className="table__container">

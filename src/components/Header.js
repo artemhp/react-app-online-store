@@ -1,7 +1,10 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logout } from "../features/account/accountSlice";
+import { useDispatch } from "react-redux";
 
 export default function Header() {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.account.value);
   console.log(user);
   return (
@@ -30,9 +33,17 @@ export default function Header() {
                 </span>
               </Link>
             </div>
-            <button className="header__logout" id="headerLogout">
-              Log out
-            </button>
+            {user.name && (
+              <button
+                onClick={() => {
+                  dispatch(logout());
+                }}
+                className="header__logout"
+                style={{ display: "block" }}
+              >
+                Log out
+              </button>
+            )}
           </div>
         </div>
       </div>
