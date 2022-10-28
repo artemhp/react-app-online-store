@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./assets/css/style.css";
+// import { useState } from "react";
+// import db from "./db";
+import Header from "./components/Header";
+import Account from "./components/Account";
 
 function App() {
+  // const [users, setUsers] = useState(db.usersDb);
+  // const [products, setProducts] = useState(db.productsDb);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <main>
+        <div className="container">
+          <Account />
+        </div>
+      </main>
+    </>
   );
 }
 
