@@ -19,6 +19,9 @@ export const accountSlice = createSlice({
         status: false,
       };
     },
+    addFavourite: (state, action) => {
+      state.value.favourites = [...state.value.favourites, action.payload];
+    },
     login: (state, action) => {
       state.value = {
         name: action.payload.name,
@@ -29,6 +32,6 @@ export const accountSlice = createSlice({
   },
 });
 
-export const { login, logout } = accountSlice.actions;
+export const { login, logout, addFavourite } = accountSlice.actions;
 
 export default accountSlice.reducer;
