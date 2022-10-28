@@ -1,18 +1,20 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <header className="header">
       <div className="container">
         <div className="header__container">
-          <a href="index.html">
+          <Link to="/">
             <img src="images/logo.png" alt="logo" height="45" />
-          </a>
+          </Link>
           <div className="header__info">
             Hi,{" "}
-            <a href="login.html" className="header__user" id="headerUser">
+            <Link to="/account" className="header__user">
               Log in
-            </a>
+            </Link>
             <div className="header__shop">
-              <a href="login.html" id="headerFavourites">
+              <Link to="/favourites">
                 <img src="images/favourite.png" alt="favourite" height="20" />
                 <span
                   className="header__shop--count"
@@ -20,7 +22,7 @@ export default function Header() {
                 >
                   0
                 </span>
-              </a>
+              </Link>
             </div>
             <button className="header__logout" id="headerLogout">
               Log out

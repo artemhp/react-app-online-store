@@ -2,7 +2,7 @@ import "./assets/css/style.css";
 // import { useState } from "react";
 // import db from "./db";
 import Header from "./components/Header";
-import Account from "./components/Account";
+import { Outlet } from "react-router-dom";
 
 function App() {
   // const [users, setUsers] = useState(db.usersDb);
@@ -13,7 +13,7 @@ function App() {
       <Header />
       <main>
         <div className="container">
-          <Account />
+          <Outlet />
         </div>
       </main>
     </>
