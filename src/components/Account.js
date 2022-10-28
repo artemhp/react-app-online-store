@@ -1,7 +1,26 @@
+import db from "../db";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../features/account/accountSlice";
+
 export default function Account() {
+  const [userEmail, setUserEmail] = useState("ivan@gmail.com");
+  const [userPassword, setUserPassword] = useState("123");
+  const dispatch = useDispatch();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Find User and Match Password
+    // Get userDb from Database
+    const isUserExist = db.usersDb.find((el) => el.email === userEmail);
+    if (isUserExist) {
+      if (isUserExist.password === userPassword) {
+        dispatch(login(isUserExist));
+      }
+    }
+  };
   return (
     <div className="columns">
-      <form id="LoginForm" className="userForm">
+      <form className="userForm" onSubmit={handleSubmit}>
         <h2 className="title">Secure Sign In</h2>
         <p className="desription">For current customers</p>
 
@@ -12,17 +31,18 @@ export default function Account() {
             type="email"
             placeholder="Email Address"
             data-name="email"
-            value="ivan@gmail.com"
+            value={userEmail}
+            onChange={(event) => setUserEmail(event.target.value)}
             required
           />
         </label>
-
         <label>
           <input
             type="password"
             placeholder="Password"
             data-name="password"
-            value="123"
+            value={userPassword}
+            onChange={(event) => setUserPassword(event.target.value)}
             required
           />
         </label>
@@ -30,7 +50,7 @@ export default function Account() {
         <button className="btn">Sign in</button>
       </form>
 
-      <form id="RegistrationForm" className="userForm">
+      {/* <form id="RegistrationForm" className="userForm">
         <p className="title">Quick Registration</p>
         <p className="desription">For new customers</p>
 
@@ -77,7 +97,7 @@ export default function Account() {
         </label>
 
         <button className="btn">Create Account</button>
-      </form>
+      </form> */}
     </div>
   );
 }
