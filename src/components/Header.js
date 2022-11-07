@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 export default function Header() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.account.value);
-  console.log(user);
   return (
     <header className="header">
       <div className="container">
