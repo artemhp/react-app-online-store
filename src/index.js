@@ -16,6 +16,7 @@ import {
 import Account from "./components/Account";
 import ItemsList from "./components/ItemsList";
 import FavouritesList from "./components/FavouritesList";
+import Details from "./components/Details";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "favourites",
         element: <FavouritesList />,
+      },
+      {
+        path: "details/:itemId",
+        element: <Details />,
       },
     ],
   },

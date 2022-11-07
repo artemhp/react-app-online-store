@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { addFavourite } from "../features/account/accountSlice";
 
 export default function ItemsList() {
@@ -34,12 +35,14 @@ export default function ItemsList() {
                 height="20"
               />
             </button>
-            <img
-              src={"images/products/" + item.img + ".png"}
-              className="product__img"
-              alt={item.title}
-              height="80"
-            />
+            <Link to={"details/" + item.id}>
+              <img
+                src={"images/products/" + item.img + ".png"}
+                className="product__img"
+                alt={item.title}
+                height="80"
+              />
+            </Link>
             <p className="product__title">{item.title}</p>
             {item.sale && (
               <div className="product__sale">
