@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { logout } from "../features/account/accountSlice";
 import { useDispatch } from "react-redux";
 
 export default function Header() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.account.value);
   return (
     <header className="header">
@@ -36,6 +37,7 @@ export default function Header() {
               <button
                 onClick={() => {
                   dispatch(logout());
+                  navigate('/')
                 }}
                 className="header__logout"
                 style={{ display: "block" }}

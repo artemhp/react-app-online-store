@@ -1,6 +1,9 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { addNewUser } from "../features/users/usersSlice";
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import FormControl from '@mui/material/FormControl';
 
 export default function Registration() {
   const [userEmail, setUserEmail] = useState("");
@@ -37,27 +40,24 @@ export default function Registration() {
         />
       </label>
 
-      <label>
-        <input
-          type="email"
-          placeholder="Email Address"
-          data-name="email"
-          value={userEmail}
-          onChange={(event) => setUserEmail(event.target.value)}
-          required
-        />
-      </label>
-
-      <label>
-        <input
-          type="password"
-          placeholder="Password"
-          data-name="password"
-          value={userPassword}
-          onChange={(event) => setUserPassword(event.target.value)}
-          required
-        />
-      </label>
+      
+      <FormControl fullWidth>
+          <TextField 
+            value={userEmail}
+            onChange={(event) => setUserEmail(event.target.value)} 
+            label="Email Address" 
+            variant="outlined"             
+            />      
+      </FormControl>
+      <FormControl fullWidth>
+          <TextField 
+            value={userPassword}
+            onChange={(event) => setUserPassword(event.target.value)} 
+            label="Password" 
+            variant="outlined"             
+            />      
+      </FormControl>
+      
 
       <label>
         <input
@@ -70,7 +70,7 @@ export default function Registration() {
         />
       </label>
 
-      <button className="btn">Create Account</button>
+      <Button variant="contained"  color="success" type="submit">Create Account</Button>
     </form>
   );
 }

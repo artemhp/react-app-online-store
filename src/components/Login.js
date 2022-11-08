@@ -1,6 +1,7 @@
 // import db from "../db";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { login } from "../features/account/accountSlice";
 
 export default function Login() {
@@ -9,6 +10,8 @@ export default function Login() {
   const [userEmail, setUserEmail] = useState("ivan@gmail.com");
   const [userPassword, setUserPassword] = useState("123");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // Find User and Match Password
@@ -17,6 +20,7 @@ export default function Login() {
     if (isUserExist) {
       if (isUserExist.password === userPassword) {
         dispatch(login(isUserExist));
+        navigate("/favourites");
       }
     }
   };
